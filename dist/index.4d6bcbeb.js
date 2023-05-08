@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"jC2qd":[function(require,module,exports) {
+})({"e11Rl":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "890e741a975ef6c8";
+module.bundle.HMR_BUNDLE_ID = "bed887d14d6bcbeb";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -556,91 +556,15 @@ function hmrAccept(bundle, id) {
     });
 }
 
-},{}],"8lqZg":[function(require,module,exports) {
+},{}],"gLLPy":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _vue = require("vue");
 var _appVue = require("./App.vue");
 var _appVueDefault = parcelHelpers.interopDefault(_appVue);
+var _mainSass = require("../src/assets/styles/main.sass"); // No necesitas importar los otros archivos sass aquí
 (0, _vue.createApp)((0, _appVueDefault.default)).mount("#app");
 
-},{"./App.vue":"fYNyc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","vue":"gzxs9"}],"fYNyc":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = require("fc4a0c169839a190");
-    if (script.__esModule) script = script.default;
-    script.render = require("7677e98273f1f34e").render;
-    require("ec42d98b1557423b").default(script);
-    script.__scopeId = "data-v-c00c71";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\Dise\xf1o de interfaces\\maquetacion_recuperacion\\src\\App.vue";
-};
-initialize();
-if (module.hot) {
-    script.__hmrId = "c00c71-hmr";
-    module.hot.accept(()=>{
-        setTimeout(()=>{
-            initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("c00c71-hmr", script)) __VUE_HMR_RUNTIME__.reload("c00c71-hmr", script);
-        }, 0);
-    });
-}
-exports.default = script;
-
-},{"fc4a0c169839a190":"iiJmB","7677e98273f1f34e":"evi43","ec42d98b1557423b":"h0MjM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iiJmB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    name: "App"
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"evi43":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-const _hoisted_1 = /*#__PURE__*/ (0, _vue.createElementVNode)("h1", null, "\xa1Hola, mundo!", -1 /* HOISTED */ );
-const _hoisted_2 = [
-    _hoisted_1
-];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", null, _hoisted_2);
-}
-if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("c00c71-hmr", render);
-});
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gzxs9":[function(require,module,exports) {
+},{"vue":"gzxs9","./App.vue":"fYNyc","../src/assets/styles/main.sass":"hg64p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gzxs9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "compile", ()=>compile);
@@ -9425,12 +9349,266 @@ function genPropsAccessExp(name) {
     return identRE.test(name) ? `__props.${name}` : `__props[${JSON.stringify(name)}]`;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h0MjM":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"fYNyc":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("fc4a0c169839a190");
+    if (script.__esModule) script = script.default;
+    script.render = require("7677e98273f1f34e").render;
+    require("ec42d98b1557423b").default(script);
+    script.__scopeId = "data-v-c00c71";
+    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\Dise\xf1o de interfaces\\maquetacion_recuperacion\\src\\App.vue";
+};
+initialize();
+if (module.hot) {
+    script.__hmrId = "c00c71-hmr";
+    module.hot.accept(()=>{
+        setTimeout(()=>{
+            initialize();
+            if (!__VUE_HMR_RUNTIME__.createRecord("c00c71-hmr", script)) __VUE_HMR_RUNTIME__.reload("c00c71-hmr", script);
+        }, 0);
+    });
+}
+exports.default = script;
+
+},{"fc4a0c169839a190":"iiJmB","7677e98273f1f34e":"evi43","ec42d98b1557423b":"h0MjM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iiJmB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _homeVue = require("../src/pages/Home.vue");
+var _homeVueDefault = parcelHelpers.interopDefault(_homeVue);
+var _headerVue = require("./components/Header.vue");
+var _headerVueDefault = parcelHelpers.interopDefault(_headerVue);
+exports.default = {
+    name: "App",
+    components: {
+        Home: (0, _homeVueDefault.default),
+        Header: (0, _headerVueDefault.default)
+    }
+};
+
+},{"../src/pages/Home.vue":"gHxj8","./components/Header.vue":"jdTzi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gHxj8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("48294c40123f380b");
+    if (script.__esModule) script = script.default;
+    script.render = require("8d5525b338677c97").render;
+    require("d6d21d95c46794b6").default(script);
+    script.__scopeId = "data-v-56a7a4";
+    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\Dise\xf1o de interfaces\\maquetacion_recuperacion\\src\\pages\\Home.vue";
+};
+initialize();
+if (module.hot) {
+    script.__hmrId = "56a7a4-hmr";
+    module.hot.accept(()=>{
+        setTimeout(()=>{
+            initialize();
+            if (!__VUE_HMR_RUNTIME__.createRecord("56a7a4-hmr", script)) __VUE_HMR_RUNTIME__.reload("56a7a4-hmr", script);
+        }, 0);
+    });
+}
+exports.default = script;
+
+},{"48294c40123f380b":"g0rxe","8d5525b338677c97":"hxIZe","d6d21d95c46794b6":"fAzkY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g0rxe":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    name: "Home"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hxIZe":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    class: "home"
+};
+const _hoisted_2 = /*#__PURE__*/ (0, _vue.createElementVNode)("h1", null, "Bienvenido a la Liga de League of Legends", -1 /* HOISTED */ );
+const _hoisted_3 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", null, "Descubre todo lo que necesitas saber sobre la liga.", -1 /* HOISTED */ );
+const _hoisted_4 = [
+    _hoisted_2,
+    _hoisted_3
+];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, _hoisted_4);
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender("56a7a4-hmr", render);
+});
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fAzkY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
 exports.default = (script)=>{};
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jC2qd","8lqZg"], "8lqZg", "parcelRequire0d62")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jdTzi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("e725c5d62ab773c5");
+    if (script.__esModule) script = script.default;
+    script.render = require("3a9ef829f09d928d").render;
+    require("dc72802c83301753").default(script);
+    script.__scopeId = "data-v-907e6e";
+    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\Dise\xf1o de interfaces\\maquetacion_recuperacion\\src\\components\\Header.vue";
+};
+initialize();
+if (module.hot) {
+    script.__hmrId = "907e6e-hmr";
+    module.hot.accept(()=>{
+        setTimeout(()=>{
+            initialize();
+            if (!__VUE_HMR_RUNTIME__.createRecord("907e6e-hmr", script)) __VUE_HMR_RUNTIME__.reload("907e6e-hmr", script);
+        }, 0);
+    });
+}
+exports.default = script;
 
-//# sourceMappingURL=index.975ef6c8.js.map
+},{"e725c5d62ab773c5":"eFOse","3a9ef829f09d928d":"2spPw","dc72802c83301753":"BBOSj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eFOse":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    name: "Header",
+    data () {
+        return {
+            sponsors: [
+                "Sponsor 1",
+                "Sponsor 2",
+                "Sponsor 3"
+            ]
+        };
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2spPw":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    class: "header"
+};
+const _hoisted_2 = {
+    class: "sponsors"
+};
+const _hoisted_3 = {
+    class: "menu"
+};
+const _hoisted_4 = /*#__PURE__*/ (0, _vue.createTextVNode)("Equipos");
+const _hoisted_5 = /*#__PURE__*/ (0, _vue.createTextVNode)("Partidas");
+const _hoisted_6 = /*#__PURE__*/ (0, _vue.createTextVNode)("Estad\xedsticas");
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_router_link = (0, _vue.resolveComponent)("router-link");
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
+        (0, _vue.createElementVNode)("div", _hoisted_2, [
+            ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($data.sponsors, (sponsor, index)=>{
+                return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("p", {
+                    key: index
+                }, (0, _vue.toDisplayString)(sponsor), 1 /* TEXT */ );
+            }), 128 /* KEYED_FRAGMENT */ ))
+        ]),
+        (0, _vue.createElementVNode)("div", _hoisted_3, [
+            (0, _vue.createVNode)(_component_router_link, {
+                to: "/teams"
+            }, {
+                default: (0, _vue.withCtx)(()=>[
+                        _hoisted_4
+                    ]),
+                _: 1 /* STABLE */ 
+            }),
+            (0, _vue.createVNode)(_component_router_link, {
+                to: "/matches"
+            }, {
+                default: (0, _vue.withCtx)(()=>[
+                        _hoisted_5
+                    ]),
+                _: 1 /* STABLE */ 
+            }),
+            (0, _vue.createVNode)(_component_router_link, {
+                to: "/stats"
+            }, {
+                default: (0, _vue.withCtx)(()=>[
+                        _hoisted_6
+                    ]),
+                _: 1 /* STABLE */ 
+            })
+        ])
+    ]);
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender("907e6e-hmr", render);
+});
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"BBOSj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"evi43":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    id: "app"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_Header = (0, _vue.resolveComponent)("Header");
+    const _component_Home = (0, _vue.resolveComponent)("Home");
+    const _component_router_view = (0, _vue.resolveComponent)("router-view");
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
+        (0, _vue.createVNode)(_component_Header),
+        (0, _vue.createVNode)(_component_Home),
+        (0, _vue.createVNode)(_component_router_view)
+    ]);
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender("c00c71-hmr", render);
+});
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h0MjM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hg64p":[function() {},{}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire0d62")
+
+//# sourceMappingURL=index.4d6bcbeb.js.map
