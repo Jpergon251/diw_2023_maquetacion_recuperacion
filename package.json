@@ -1,0 +1,19 @@
+{
+  "name": "maquetacion_recuperacion",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "Jose Antonio Perez Gonzalez",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-vue": "^2.8.3",
+    "vue": "^3.2.36"
+  },
+  "dependencies": {
+    "parcel": "^2.8.3"
+  },
+  "description": ""
+}
