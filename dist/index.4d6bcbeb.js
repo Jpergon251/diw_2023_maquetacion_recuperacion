@@ -9410,15 +9410,18 @@ var _homeVue = require("../src/pages/Home.vue");
 var _homeVueDefault = parcelHelpers.interopDefault(_homeVue);
 var _headerVue = require("./components/Header.vue");
 var _headerVueDefault = parcelHelpers.interopDefault(_headerVue);
+var _footerVue = require("./components/Footer.vue");
+var _footerVueDefault = parcelHelpers.interopDefault(_footerVue);
 exports.default = {
     name: "App",
     components: {
         Home: (0, _homeVueDefault.default),
-        Header: (0, _headerVueDefault.default)
+        Header: (0, _headerVueDefault.default),
+        Footer: (0, _footerVueDefault.default)
     }
 };
 
-},{"../src/pages/Home.vue":"gHxj8","./components/Header.vue":"jdTzi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gHxj8":[function(require,module,exports) {
+},{"../src/pages/Home.vue":"gHxj8","./components/Header.vue":"jdTzi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./components/Footer.vue":"4M4mx"}],"gHxj8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
@@ -9458,7 +9461,7 @@ const _hoisted_1 = {
     class: "home"
 };
 const _hoisted_2 = /*#__PURE__*/ (0, _vue.createElementVNode)("h1", null, "Bienvenido a la Liga de League of Legends", -1 /* HOISTED */ );
-const _hoisted_3 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", null, "Descubre todo lo que necesitas saber sobre la liga.", -1 /* HOISTED */ );
+const _hoisted_3 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", null, "Descubre todo lo que necesitas saber sobre la liga de League of Legends, descubre sus equipos con los mejores y mas carismaticos jugadores.", -1 /* HOISTED */ );
 const _hoisted_4 = [
     _hoisted_2,
     _hoisted_3
@@ -9504,15 +9507,10 @@ exports.default = script;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
-    name: "Header",
-    data () {
-        return {
-            sponsors: [
-                "Sponsor 1",
-                "Sponsor 2",
-                "Sponsor 3"
-            ]
-        };
+    methods: {
+        getPath (num) {
+            return "../assets/images/sponsors/sponsor" + num + ".png";
+        }
     }
 };
 
@@ -9524,31 +9522,69 @@ var _vue = require("vue");
 const _hoisted_1 = {
     class: "header"
 };
-const _hoisted_2 = {
-    class: "sponsors"
-};
+const _hoisted_2 = /*#__PURE__*/ (0, _vue.createElementVNode)("figure", {
+    class: "logo"
+}, [
+    /*#__PURE__*/ (0, _vue.createElementVNode)("img", {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/League_of_Legends_2019_vector.svg/800px-League_of_Legends_2019_vector.svg.png",
+        alt: "Logo"
+    })
+], -1 /* HOISTED */ );
 const _hoisted_3 = {
+    class: "sponsor-list"
+};
+const _hoisted_4 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+    class: "sponsor-thanks"
+}, "Gracias por patrocinarnos", -1 /* HOISTED */ );
+const _hoisted_5 = {
+    class: "sponsor-item"
+};
+const _hoisted_6 = [
+    "src"
+];
+const _hoisted_7 = {
     class: "menu"
 };
-const _hoisted_4 = /*#__PURE__*/ (0, _vue.createTextVNode)("Equipos");
-const _hoisted_5 = /*#__PURE__*/ (0, _vue.createTextVNode)("Partidas");
-const _hoisted_6 = /*#__PURE__*/ (0, _vue.createTextVNode)("Estad\xedsticas");
+const _hoisted_8 = /*#__PURE__*/ (0, _vue.createElementVNode)("a", null, "Equipos", -1 /* HOISTED */ );
+const _hoisted_9 = /*#__PURE__*/ (0, _vue.createTextVNode)("Partidas");
+const _hoisted_10 = /*#__PURE__*/ (0, _vue.createTextVNode)("Estad\xedsticas");
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_router_link = (0, _vue.resolveComponent)("router-link");
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
-        (0, _vue.createElementVNode)("div", _hoisted_2, [
-            ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($data.sponsors, (sponsor, index)=>{
-                return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("p", {
-                    key: index
-                }, (0, _vue.toDisplayString)(sponsor), 1 /* TEXT */ );
-            }), 128 /* KEYED_FRAGMENT */ ))
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("header", _hoisted_1, [
+        _hoisted_2,
+        (0, _vue.createElementVNode)("ul", _hoisted_3, [
+            _hoisted_4,
+            ((0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)([
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+            ], (number)=>{
+                return (0, _vue.createElementVNode)("li", _hoisted_5, [
+                    (0, _vue.createElementVNode)("img", {
+                        src: $options.getPath(number),
+                        alt: ""
+                    }, null, 8 /* PROPS */ , _hoisted_6)
+                ]);
+            }), 64 /* STABLE_FRAGMENT */ ))
         ]),
-        (0, _vue.createElementVNode)("div", _hoisted_3, [
+        (0, _vue.createElementVNode)("nav", _hoisted_7, [
             (0, _vue.createVNode)(_component_router_link, {
                 to: "/teams"
             }, {
                 default: (0, _vue.withCtx)(()=>[
-                        _hoisted_4
+                        _hoisted_8
                     ]),
                 _: 1 /* STABLE */ 
             }),
@@ -9556,7 +9592,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 to: "/matches"
             }, {
                 default: (0, _vue.withCtx)(()=>[
-                        _hoisted_5
+                        _hoisted_9
                     ]),
                 _: 1 /* STABLE */ 
             }),
@@ -9564,7 +9600,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 to: "/stats"
             }, {
                 default: (0, _vue.withCtx)(()=>[
-                        _hoisted_6
+                        _hoisted_10
                     ]),
                 _: 1 /* STABLE */ 
             })
@@ -9581,6 +9617,92 @@ parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
 exports.default = (script)=>{};
 
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4M4mx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("8ad597a7510ad5e0");
+    if (script.__esModule) script = script.default;
+    script.render = require("653d36cf429dddb3").render;
+    require("d4c95ea19a0a5690").default(script);
+    script.__scopeId = "data-v-60ce56";
+    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\Dise\xf1o de interfaces\\maquetacion_recuperacion\\src\\components\\Footer.vue";
+};
+initialize();
+if (module.hot) {
+    script.__hmrId = "60ce56-hmr";
+    module.hot.accept(()=>{
+        setTimeout(()=>{
+            initialize();
+            if (!__VUE_HMR_RUNTIME__.createRecord("60ce56-hmr", script)) __VUE_HMR_RUNTIME__.reload("60ce56-hmr", script);
+        }, 0);
+    });
+}
+exports.default = script;
+
+},{"8ad597a7510ad5e0":"eD6Fm","653d36cf429dddb3":"9ZCf8","d4c95ea19a0a5690":"e3C8j","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eD6Fm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    data () {
+        return {
+            sponsors: []
+        };
+    },
+    mounted () {
+        this.loadSponsors();
+    },
+    methods: {
+        loadSponsors () {
+            const images = undefined("@/assets/images/sponsors/", false, /\.(png|jpe?g|gif|svg)$/);
+            this.sponsors = images.keys().map(images);
+        }
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9ZCf8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    class: "footer"
+};
+const _hoisted_2 = /*#__PURE__*/ (0, _vue.createElementVNode)("h1", null, "Este es el footer", -1 /* HOISTED */ );
+const _hoisted_3 = {
+    class: "sponsors"
+};
+const _hoisted_4 = [
+    "src"
+];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("footer", _hoisted_1, [
+        _hoisted_2,
+        (0, _vue.createElementVNode)("ul", _hoisted_3, [
+            ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($data.sponsors, (sponsor, index)=>{
+                return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("li", {
+                    key: index
+                }, [
+                    (0, _vue.createElementVNode)("img", {
+                        src: sponsor,
+                        alt: "sponsor"
+                    }, null, 8 /* PROPS */ , _hoisted_4)
+                ]);
+            }), 128 /* KEYED_FRAGMENT */ ))
+        ])
+    ]);
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender("60ce56-hmr", render);
+});
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e3C8j":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
+
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"evi43":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -9592,10 +9714,12 @@ const _hoisted_1 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Header = (0, _vue.resolveComponent)("Header");
     const _component_Home = (0, _vue.resolveComponent)("Home");
+    const _component_Footer = (0, _vue.resolveComponent)("Footer");
     const _component_router_view = (0, _vue.resolveComponent)("router-view");
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
         (0, _vue.createVNode)(_component_Header),
         (0, _vue.createVNode)(_component_Home),
+        (0, _vue.createVNode)(_component_Footer),
         (0, _vue.createVNode)(_component_router_view)
     ]);
 }
