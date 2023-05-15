@@ -9519,6 +9519,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
 var _vue = require("vue");
+var _sponsor1Png = require("../assets/images/sponsors/sponsor1.png");
+var _sponsor1PngDefault = parcelHelpers.interopDefault(_sponsor1Png);
 const _hoisted_1 = {
     class: "header"
 };
@@ -9539,15 +9541,19 @@ const _hoisted_4 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
 const _hoisted_5 = {
     class: "sponsor-item"
 };
-const _hoisted_6 = [
-    "src"
+const _hoisted_6 = /*#__PURE__*/ (0, _vue.createElementVNode)("img", {
+    src: (0, _sponsor1PngDefault.default),
+    alt: ""
+}, null, -1 /* HOISTED */ );
+const _hoisted_7 = [
+    _hoisted_6
 ];
-const _hoisted_7 = {
+const _hoisted_8 = {
     class: "menu"
 };
-const _hoisted_8 = /*#__PURE__*/ (0, _vue.createElementVNode)("a", null, "Equipos", -1 /* HOISTED */ );
-const _hoisted_9 = /*#__PURE__*/ (0, _vue.createTextVNode)("Partidas");
-const _hoisted_10 = /*#__PURE__*/ (0, _vue.createTextVNode)("Estad\xedsticas");
+const _hoisted_9 = /*#__PURE__*/ (0, _vue.createElementVNode)("a", null, "Equipos", -1 /* HOISTED */ );
+const _hoisted_10 = /*#__PURE__*/ (0, _vue.createTextVNode)("Partidas");
+const _hoisted_11 = /*#__PURE__*/ (0, _vue.createTextVNode)("Estad\xedsticas");
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_router_link = (0, _vue.resolveComponent)("router-link");
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("header", _hoisted_1, [
@@ -9571,25 +9577,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 14,
                 15
             ], (number)=>{
-                return (0, _vue.createElementVNode)("li", _hoisted_5, [
-                    (0, _vue.createElementVNode)("img", {
-                        src: $options.getPath(number),
-                        alt: ""
-                    }, null, 8 /* PROPS */ , _hoisted_6)
-                ]);
+                return (0, _vue.createElementVNode)("li", _hoisted_5, _hoisted_7);
             }), 64 /* STABLE_FRAGMENT */ ))
         ]),
-        (0, _vue.createElementVNode)("nav", _hoisted_7, [
+        (0, _vue.createElementVNode)("nav", _hoisted_8, [
             (0, _vue.createVNode)(_component_router_link, {
                 to: "/teams"
-            }, {
-                default: (0, _vue.withCtx)(()=>[
-                        _hoisted_8
-                    ]),
-                _: 1 /* STABLE */ 
-            }),
-            (0, _vue.createVNode)(_component_router_link, {
-                to: "/matches"
             }, {
                 default: (0, _vue.withCtx)(()=>[
                         _hoisted_9
@@ -9597,10 +9590,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 _: 1 /* STABLE */ 
             }),
             (0, _vue.createVNode)(_component_router_link, {
-                to: "/stats"
+                to: "/matches"
             }, {
                 default: (0, _vue.withCtx)(()=>[
                         _hoisted_10
+                    ]),
+                _: 1 /* STABLE */ 
+            }),
+            (0, _vue.createVNode)(_component_router_link, {
+                to: "/stats"
+            }, {
+                default: (0, _vue.withCtx)(()=>[
+                        _hoisted_11
                     ]),
                 _: 1 /* STABLE */ 
             })
@@ -9611,7 +9612,44 @@ if (module.hot) module.hot.accept(()=>{
     __VUE_HMR_RUNTIME__.rerender("907e6e-hmr", render);
 });
 
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"BBOSj":[function(require,module,exports) {
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../assets/images/sponsors/sponsor1.png":"15UrR"}],"15UrR":[function(require,module,exports) {
+module.exports = require("3ee2995b8447caba").getBundleURL("gnRNX") + "sponsor1.93553e64.png" + "?" + Date.now();
+
+},{"3ee2995b8447caba":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"BBOSj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
