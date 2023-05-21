@@ -11,11 +11,18 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
     "@parcel/transformer-vue": "^2.8.3",
-    "vue": "^3.2.36"
+    "babel-plugin-transform-require-context": "^0.1.1",
+    "path-browserify": "^1.0.1",
+    "vue": "^3.3.2",
+    "vue-loader": "^17.1.1",
+    "webpack": "^5.83.1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "parcel": "^2.8.3",
-    "sass": "^1.62.1"
+    "path": "^0.12.7",
+    "sass": "^1.62.1",
+    "vue-router": "^4.2.1"
   },
   "description": ""
 }

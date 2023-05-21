@@ -1,4 +1,10 @@
 module.exports = {
+    presets: ["@vue/cli-plugin-babel/preset"],
+    env: {
+      test: {
+        plugins: ["transform-require-context"],
+      },
+    },
     pluginOptions: {
       parcel: {
         // Agrega los estilos globales en main.sass

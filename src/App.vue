@@ -1,23 +1,23 @@
 <template>
     <div id="app">
       <Header/>
-      <Home/>
+      <router-view/>
       <Footer/>
-      <router-view />
     </div>
   </template>
   
   <script>
-  import Home from '../src/pages/Home.vue'
   import Header from './components/Header.vue';
   import Footer from './components/Footer.vue';
+  import { router } from './router/index.js'; // Importar el enrutador desde el archivo index.js
+
   
   export default {
     name: 'App',
     components: {
-      Home,
       Header,
       Footer
-    }
+    },
+    router
   }
   </script>

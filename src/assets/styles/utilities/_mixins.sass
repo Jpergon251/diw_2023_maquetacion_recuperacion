@@ -1,0 +1,10 @@
+
+    
+
+@mixin generate-sponsors($total)
+  $image-path: "../../assets/images/sponsors/sponsor"
+  $image-extension: ".png"
+  @for $i from 1 through $total
+    .sponsor-#{$i}
+      background-image: url(#{$image-path + $i + $image-extension})
+  

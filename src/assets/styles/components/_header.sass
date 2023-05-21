@@ -4,31 +4,110 @@
 
 // Estilos del header
 .header
+  border-bottom: 1px solid #ccc 
   display: flex
   justify-content: space-between
   align-items: center
   padding: 1rem
-  background-color: $primary-color
   font-size: 1.5rem
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
   // Estilos del logo
   .logo
+    margin: 0px 100px 0px 100px
     img
       width: 200px
   // Estilos del letrero de sponsors
-  .sponsors-list
-    
+  .sponsor-group 
+    display: flex
+    flex-direction: column
+    align-items: center
+  
+
+  .sponsor-thanks 
+    text-align: center
+    font-weight: 600
+    color: $color-main
+    margin-bottom: 1rem
+  
+ 
+  .sponsor-image 
+    width: 200px
+    height: 66px
+    animation: slide-up 45s infinite
+    background-size: contain 
+    background-repeat: no-repeat
+  
 
   // Estilos del menú de navegación
-  .menu
+  .menu 
+    color: $color-main
     display: flex
     gap: 1rem
-
-    // Estilos de los enlaces del menú
-    a
+    margin: 0px 100px 0px 100px
+    a 
+      display: block
+      padding: 10px
       text-decoration: none
-      padding: 0.5rem
+      color: $color-main
+    a:hover
+      color: $color-main-high
+    .router-link-active
+      color: #fff
+      background-color: $color-main
+      border-radius: 5px
+    .router-link-active:hover
+      color: #fff
+      background-color: $color-main-high
+  &.active 
+    flex-direction: column
+    align-items: flex-start
 
-      &:hover
-        background-color: $secondary-color
-        border-radius: 0.5rem
+    
+   
+  .menu-icon 
+    display: none
+  
+
+  @media (max-width: 1250px) 
+    .logo
+      margin: 0
+
+    .menu 
+      flex-direction: column
+      align-items: flex-start
+
+      .menu-icon 
+        display: block
+        cursor: pointer
+        color: $color-main
+        font-size: 1.5rem
+        margin: 10px 0
+
+        &:hover 
+          color: $color-main-high
+        
+      
+
+      a 
+        display: none
+        padding: 10px
+        background-color: #ffffff
+        color: $color-main
+      a:hover
+        color: $color-main-high
+      
+
+      &.active a 
+        display: block
+
+// animations
+
+@keyframes slide-up 
+  @for $i from 0 to $slide-count 
+    $percentage: percentage(calc($i / $slide-count))
+    #{$percentage} 
+      background-image: url("../images/sponsors/sponsor#{$i + 1}.png")
+  
+  
+  
+

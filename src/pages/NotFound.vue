@@ -1,0 +1,13 @@
+<template>
+    <div class="not-found">
+      <h1>Error 404: Página no encontrada</h1>
+      <p>Lo sentimos, la página que estás buscando no existe.</p>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: 'NotFound'
+  }
+  </script>
+  

@@ -1,29 +1,29 @@
 <template>
-    <footer class="footer">
-        <h1>Este es el footer</h1>
-      <ul class="sponsors">
-        <li v-for="(sponsor, index) in sponsors" :key="index">
-          <img :src="sponsor" alt="sponsor">
-        </li>
-      </ul>
-    </footer>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        sponsors: [],
-      };
-    },
-    mounted() {
-      this.loadSponsors();
-    },
-    methods: {
-      loadSponsors() {
-        const images = require.context('@/assets/images/sponsors/', false, /\.(png|jpe?g|gif|svg)$/);
-        this.sponsors = images.keys().map(images);
-      },
-    },
-  };
-  </script>
+  <footer class="footer">
+    <section class="sponsor-section">
+      <div class="sponsor-group">
+        <a v-for="number in 15" :key="number" :class="'sponsor-image sponsor-' + number"></a>
+      </div>
+    </section>
+    <section class="info-section">
+      <div class="copyright">
+        <p>
+          &copy; 2023 Todos los derechos reservados.
+        </p>
+        <p>
+          <a href="#">Condiciones de uso</a>
+        </p>
+        <p>
+          <a href="#">Politica de cookies</a>
+        </p>
+      </div>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitch"></i></a>
+      </div>
+    </section>
+  </footer>
+</template>
