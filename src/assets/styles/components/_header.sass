@@ -43,7 +43,7 @@
     color: $color-main
     display: flex
     gap: 1rem
-    margin: 0px 100px 0px 100px
+    margin: 0px 20px 0px 100px
     a 
       display: block
       padding: 10px
@@ -69,36 +69,53 @@
   
 
   @media (max-width: 1250px) 
+
     .logo
       margin: 0
 
-    .menu 
-      flex-direction: column
-      align-items: flex-start
-
-      .menu-icon 
-        display: block
-        cursor: pointer
-        color: $color-main
-        font-size: 1.5rem
-        margin: 10px 0
-
-        &:hover 
-          color: $color-main-high
-        
-      
-
+    .menu
+      display: none 
       a 
         display: none
         padding: 10px
-        background-color: #ffffff
         color: $color-main
       a:hover
         color: $color-main-high
       
 
-      &.active a 
-        display: block
+      &.active
+        display: flex
+        flex-direction: column
+        align-items: center
+        position: absolute
+        top: 120px
+        right: 0px
+        padding: 20px
+        border-radius: 5px
+        background-color: #fff
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5) 
+        animation: dropdown 0.3s
+        a 
+          min-width: 100px
+          text-align: center
+          display: block
+    .menu:not(.active)
+      animation: dropdown-out 0.3s
+        
+
+    .menu-icon 
+      display: block
+      cursor: pointer
+      color: $color-main
+      font-size: 1.5rem
+      margin: 10px 0
+
+      &:hover 
+        color: $color-main-high
+        
+      
+
+      
 
 // animations
 
@@ -108,6 +125,18 @@
     #{$percentage} 
       background-image: url("../images/sponsors/sponsor#{$i + 1}.png")
   
-  
-  
+@keyframes dropdown
+  from
+    transform: translateY(-50px)
+    opacity: 0
+  to
+    transform: translateY(0)
+    opacity: 1
 
+@keyframes dropdown-out
+  from
+    transform: translateY(0)
+    opacity: 1
+  to
+    transform: translateY(-50px)
+    opacity: 0

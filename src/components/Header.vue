@@ -7,10 +7,12 @@
         <a class="sponsor-image"></a>
       </section>
       
-      <nav class="menu" :class="{ active: isActive }">
-        <div class="menu-icon" @click="toggleMenu">
+      <div class="menu-icon" @click="toggleMenu">
           <i class="fas fa-bars"></i>
-        </div>
+      </div>
+
+      <nav class="menu" :class="{ active: isActive }">
+        
 
         <router-link to="/" class="link">Inicio</router-link>
         <router-link to="/teams" class="link">Equipos</router-link>
