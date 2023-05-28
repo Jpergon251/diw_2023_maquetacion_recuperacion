@@ -2,8 +2,9 @@
   <div class="matches">
     <ul class="matches-list">
       <li v-for="match in matches" :key="match.id" class="match">
+        <h3 class="match-date">{{ match.date }}</h3>
         <section class="match-info">
-          <h3 class="match-date">{{ match.date }}</h3>
+          
           <figure class="team">
             <img :src="match.team1.src" :alt="match.team1.name" class="team-logo">
             <p class="team-name">{{ match.team1.name }}</p>
@@ -13,11 +14,6 @@
             <img :src="match.team2.src" :alt="match.team2.name" class="team-logo">
             <p class="team-name">{{ match.team2.name }}</p>
             <p class="result" :class="{ 'victory': match.winner === match.team2.name, 'defeat': match.winner === match.team1.name, 'draw': match.winner === 'Empate'}">{{ match.winner === match.team2.name ? 'Victoria' : (match.winner === 'Empate' ? 'Empate' : 'Derrota') }}</p>
-          </figure>
-          <figure class="match-details">
-            <p class="match-stat">KDA: {{ match.kda }}</p>
-            <p class="match-stat">Oro ganado: {{ match.gold }}</p>
-            <p class="match-stat">Duración: {{ match.duration }}</p>
           </figure>
         </section>
       </li>

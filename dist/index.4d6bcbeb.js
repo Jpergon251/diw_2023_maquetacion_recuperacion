@@ -567,7 +567,7 @@ var _mainSass = require("../src/assets/styles/main.sass"); // No necesitas impor
 var _allCss = require("@fortawesome/fontawesome-free/css/all.css");
 (0, _vue.createApp)((0, _appVueDefault.default)).use((0, _routerDefault.default)).mount("#app");
 
-},{"vue":"gzxs9","./App.vue":"fYNyc","./router":"lY5uy","../src/assets/styles/main.sass":"hg64p","@fortawesome/fontawesome-free/css/all.css":"8OILE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gzxs9":[function(require,module,exports) {
+},{"vue":"gzxs9","./App.vue":"fYNyc","../src/assets/styles/main.sass":"hg64p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@fortawesome/fontawesome-free/css/all.css":"8OILE","./router":"lY5uy"}],"gzxs9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "compile", ()=>compile);
@@ -1963,27 +1963,8 @@ function popWarningContext() {
     stack.pop();
 }
 function warn(msg, ...args) {
-    (0, _reactivity.pauseTracking)();
-    const instance = stack.length ? stack[stack.length - 1].component : null;
-    const appWarnHandler = instance && instance.appContext.config.warnHandler;
-    const trace = getComponentTrace();
-    if (appWarnHandler) callWithErrorHandling(appWarnHandler, instance, 11, [
-        msg + args.join(""),
-        instance && instance.proxy,
-        trace.map(({ vnode  })=>`at <${formatComponentName(instance, vnode.type)}>`).join("\n"),
-        trace
-    ]);
-    else {
-        const warnArgs = [
-            `[Vue warn]: ${msg}`,
-            ...args
-        ];
-        if (trace.length && // avoid spamming console during tests
-        true) warnArgs.push(`
-`, ...formatTrace(trace));
-        console.warn(...warnArgs);
-    }
-    (0, _reactivity.resetTracking)();
+    var vnode;
+    return;
 }
 function getComponentTrace() {
     let currentVNode = stack[stack.length - 1];
@@ -2061,9 +2042,7 @@ function formatProp(key, value1, raw) {
     }
 }
 function assertNumber(val, type) {
-    if (val === void 0) return;
-    else if (typeof val !== "number") warn(`${type} is not a valid number - got ${JSON.stringify(val)}.`);
-    else if (isNaN(val)) warn(`${type} is NaN - the duration expression might be incorrect.`);
+    return;
 }
 const ErrorTypeStrings = {
     ["sp"]: "serverPrefetch hook",
@@ -3272,6 +3251,7 @@ const BaseTransitionImpl = {
                     }
                     child = c;
                     hasFound = true;
+                    break;
                 }
             }
             const rawProps = (0, _reactivity.toRaw)(props);
@@ -4655,9 +4635,9 @@ function updateProps(instance, rawProps, rawPrevProps, optimized) {
         if (setFullProps(instance, rawProps, props, attrs)) hasAttrsChanged = true;
         let kebabKey;
         for(const key in rawCurrentProps)if (!rawProps || // for camelCase
-        !(0, _shared.hasOwn)(rawProps, key) && // it's possible the original props was passed in as kebab-case
+        !(0, _shared.hasOwn)(rawProps, key) && (// it's possible the original props was passed in as kebab-case
         // and converted to camelCase (#955)
-        ((kebabKey = (0, _shared.hyphenate)(key)) === key || !(0, _shared.hasOwn)(rawProps, kebabKey))) {
+        (kebabKey = (0, _shared.hyphenate)(key)) === key || !(0, _shared.hasOwn)(rawProps, kebabKey))) {
             if (options) {
                 if (rawPrevProps && // for camelCase
                 (rawPrevProps[key] !== void 0 || // for kebab-case
@@ -6759,76 +6739,7 @@ function isShallow(value1) {
     return !!(value1 && value1["__v_isShallow"]);
 }
 function initCustomFormatter() {
-    if (typeof window === "undefined") return;
-    const vueStyle = {
-        style: "color:#3ba776"
-    };
-    const numberStyle = {
-        style: "color:#0b1bc9"
-    };
-    const stringStyle = {
-        style: "color:#b62e24"
-    };
-    const keywordStyle = {
-        style: "color:#9d288c"
-    };
-    const formatter = {
-        header (obj) {
-            if (!(0, _shared.isObject)(obj)) return null;
-            if (obj.__isVue) return [
-                "div",
-                vueStyle,
-                `VueInstance`
-            ];
-            else if ((0, _reactivity.isRef)(obj)) return [
-                "div",
-                {},
-                [
-                    "span",
-                    vueStyle,
-                    genRefFlag(obj)
-                ],
-                "<",
-                formatValue(obj.value),
-                `>`
-            ];
-            else if ((0, _reactivity.isReactive)(obj)) return [
-                "div",
-                {},
-                [
-                    "span",
-                    vueStyle,
-                    isShallow(obj) ? "ShallowReactive" : "Reactive"
-                ],
-                "<",
-                formatValue(obj),
-                `>${(0, _reactivity.isReadonly)(obj) ? ` (readonly)` : ``}`
-            ];
-            else if ((0, _reactivity.isReadonly)(obj)) return [
-                "div",
-                {},
-                [
-                    "span",
-                    vueStyle,
-                    isShallow(obj) ? "ShallowReadonly" : "Readonly"
-                ],
-                "<",
-                formatValue(obj),
-                ">"
-            ];
-            return null;
-        },
-        hasBody (obj) {
-            return obj && obj.__isVue;
-        },
-        body (obj) {
-            if (obj && obj.__isVue) return [
-                "div",
-                {},
-                ...formatInstance(obj.$)
-            ];
-        }
-    };
+    return;
     function formatInstance(instance) {
         const blocks = [];
         if (instance.type.props && instance.props) blocks.push(createInstanceBlock("props", (0, _reactivity.toRaw)(instance.props)));
@@ -6941,10 +6852,6 @@ function initCustomFormatter() {
         if (v1.effect) return `ComputedRef`;
         return `Ref`;
     }
-    if (window.devtoolsFormatters) window.devtoolsFormatters.push(formatter);
-    else window.devtoolsFormatters = [
-        formatter
-    ];
 }
 function withMemo(memo, render, cache, index) {
     const cached = cache[index];
@@ -6962,7 +6869,7 @@ function isMemoSame(cached, memo) {
     if (isBlockTreeEnabled > 0 && currentBlock) currentBlock.push(cached);
     return true;
 }
-const version = "3.3.4";
+const version = "3.3.2";
 const _ssrUtils = {
     createComponentInstance,
     setupComponent,
@@ -8209,7 +8116,7 @@ function normalizeStyle(value) {
 }
 const listDelimiterRE = /;(?![^(]*\))/g;
 const propertyDelimiterRE = /:([^]+)/;
-const styleCommentRE = /\/\*[^]*?\*\//g;
+const styleCommentRE = new RegExp("\\/\\*.*?\\*\\/", "gs");
 function parseStringStyle(cssText) {
     const ret = {};
     cssText.replace(styleCommentRE, "").split(listDelimiterRE).forEach((item)=>{
@@ -8408,26 +8315,26 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
-    script = require("a3f5b81d44d5f46a");
+    script = require("ee2c9348b330f58b");
     if (script.__esModule) script = script.default;
-    script.render = require("c06f1e63aff1303d").render;
-    require("678030e2ed5a9e8c").default(script);
-    script.__scopeId = "data-v-8784af";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\App.vue";
+    script.render = require("365b7884b2cf709c").render;
+    require("f0a8d808464536a5").default(script);
+    script.__scopeId = "data-v-89c228";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\App.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = "8784af-hmr";
+    script.__hmrId = "89c228-hmr";
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("8784af-hmr", script)) __VUE_HMR_RUNTIME__.reload("8784af-hmr", script);
+            if (!__VUE_HMR_RUNTIME__.createRecord("89c228-hmr", script)) __VUE_HMR_RUNTIME__.reload("89c228-hmr", script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"a3f5b81d44d5f46a":"iiJmB","c06f1e63aff1303d":"evi43","678030e2ed5a9e8c":"h0MjM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iiJmB":[function(require,module,exports) {
+},{"ee2c9348b330f58b":"iiJmB","365b7884b2cf709c":"evi43","f0a8d808464536a5":"h0MjM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iiJmB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _headerVue = require("./components/Header.vue");
@@ -8444,31 +8351,31 @@ exports.default = {
     router: (0, _indexJs.router)
 };
 
-},{"./components/Header.vue":"jdTzi","./components/Footer.vue":"4M4mx","./router/index.js":"lY5uy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jdTzi":[function(require,module,exports) {
+},{"./components/Header.vue":"jdTzi","./components/Footer.vue":"4M4mx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./router/index.js":"lY5uy"}],"jdTzi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
-    script = require("aa63c6651da93b87");
+    script = require("a42e31509f8fffbb");
     if (script.__esModule) script = script.default;
-    script.render = require("982490cb47cba5c").render;
-    require("5386d07f29f0a4ce").default(script);
-    script.__scopeId = "data-v-7bae15";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\components\\Header.vue";
+    script.render = require("4ef5a6a7553b21b5").render;
+    require("6011e8574fd041dd").default(script);
+    script.__scopeId = "data-v-ccf2ac";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\components\\Header.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = "7bae15-hmr";
+    script.__hmrId = "ccf2ac-hmr";
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("7bae15-hmr", script)) __VUE_HMR_RUNTIME__.reload("7bae15-hmr", script);
+            if (!__VUE_HMR_RUNTIME__.createRecord("ccf2ac-hmr", script)) __VUE_HMR_RUNTIME__.reload("ccf2ac-hmr", script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"aa63c6651da93b87":"eFOse","982490cb47cba5c":"2spPw","5386d07f29f0a4ce":"BBOSj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eFOse":[function(require,module,exports) {
+},{"a42e31509f8fffbb":"eFOse","4ef5a6a7553b21b5":"2spPw","6011e8574fd041dd":"BBOSj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eFOse":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -8547,7 +8454,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("7bae15-hmr", render);
+    __VUE_HMR_RUNTIME__.rerender("ccf2ac-hmr", render);
 });
 
 },{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"BBOSj":[function(require,module,exports) {
@@ -8562,24 +8469,24 @@ parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
     script = {};
-    script.render = require("103a28a911e02b63").render;
-    require("94b2288e7d05c127").default(script);
-    script.__scopeId = "data-v-a46586";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\components\\Footer.vue";
+    script.render = require("d6de6298adbb10a").render;
+    require("9115709c38fb9742").default(script);
+    script.__scopeId = "data-v-1610da";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\components\\Footer.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = "a46586-hmr";
+    script.__hmrId = "1610da-hmr";
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("a46586-hmr", script)) __VUE_HMR_RUNTIME__.reload("a46586-hmr", script);
+            if (!__VUE_HMR_RUNTIME__.createRecord("1610da-hmr", script)) __VUE_HMR_RUNTIME__.reload("1610da-hmr", script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"103a28a911e02b63":"9ZCf8","94b2288e7d05c127":"e3C8j","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9ZCf8":[function(require,module,exports) {
+},{"d6de6298adbb10a":"9ZCf8","9115709c38fb9742":"e3C8j","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9ZCf8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
@@ -8610,7 +8517,7 @@ function render(_ctx, _cache) {
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("a46586-hmr", render);
+    __VUE_HMR_RUNTIME__.rerender("1610da-hmr", render);
 });
 
 },{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e3C8j":[function(require,module,exports) {
@@ -8668,7 +8575,7 @@ const router = (0, _vueRouter.createRouter)({
 });
 exports.default = router;
 
-},{"vue-router":"c18b3","../pages/Home.vue":"gHxj8","../pages/Teams.vue":"jwsc2","../pages/NotFound.vue":"1MExh","../pages/Matches.vue":"lzGa0","../components/Players.vue":"h1TTJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c18b3":[function(require,module,exports) {
+},{"vue-router":"c18b3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../pages/Home.vue":"gHxj8","../pages/Teams.vue":"jwsc2","../pages/NotFound.vue":"1MExh","../components/Players.vue":"h1TTJ","../pages/Matches.vue":"lzGa0"}],"c18b3":[function(require,module,exports) {
 /*!
   * vue-router v4.2.1
   * (c) 2023 Eduardo San Martin Morote
@@ -11902,26 +11809,26 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
-    script = require("ee1a0cff06fbdf64");
+    script = require("addb04e4fe7c0e31");
     if (script.__esModule) script = script.default;
-    script.render = require("32b954e8ffac7bc7").render;
-    require("ff646a50bbc76fb9").default(script);
-    script.__scopeId = "data-v-b08ddc";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\pages\\Home.vue";
+    script.render = require("ae0cf55b0e43e9f8").render;
+    require("ac62965f78592f12").default(script);
+    script.__scopeId = "data-v-ef249c";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\pages\\Home.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = "b08ddc-hmr";
+    script.__hmrId = "ef249c-hmr";
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("b08ddc-hmr", script)) __VUE_HMR_RUNTIME__.reload("b08ddc-hmr", script);
+            if (!__VUE_HMR_RUNTIME__.createRecord("ef249c-hmr", script)) __VUE_HMR_RUNTIME__.reload("ef249c-hmr", script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"ee1a0cff06fbdf64":"g0rxe","32b954e8ffac7bc7":"hxIZe","ff646a50bbc76fb9":"fAzkY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g0rxe":[function(require,module,exports) {
+},{"addb04e4fe7c0e31":"g0rxe","ae0cf55b0e43e9f8":"hxIZe","ac62965f78592f12":"fAzkY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g0rxe":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -11946,7 +11853,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", _hoisted_1, _hoisted_4);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("b08ddc-hmr", render);
+    __VUE_HMR_RUNTIME__.rerender("ef249c-hmr", render);
 });
 
 },{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fAzkY":[function(require,module,exports) {
@@ -11960,142 +11867,26 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
-    script = require("c079b6b45b8b02f5");
+    script = require("729ba35eeff20f13");
     if (script.__esModule) script = script.default;
-    script.render = require("84aec8161ae9926b").render;
-    require("40919e7b75000ca0").default(script);
-    script.__scopeId = "data-v-bcc5d4";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\pages\\Teams.vue";
+    script.render = require("d09cd06a153ee05b").render;
+    require("7c4269ad9a577999").default(script);
+    script.__scopeId = "data-v-40fdf8";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\pages\\Teams.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = "bcc5d4-hmr";
+    script.__hmrId = "40fdf8-hmr";
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("bcc5d4-hmr", script)) __VUE_HMR_RUNTIME__.reload("bcc5d4-hmr", script);
+            if (!__VUE_HMR_RUNTIME__.createRecord("40fdf8-hmr", script)) __VUE_HMR_RUNTIME__.reload("40fdf8-hmr", script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"c079b6b45b8b02f5":"9BJT7","84aec8161ae9926b":"9LhQ4","40919e7b75000ca0":"i9oEo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BJT7":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    data () {
-        return {
-            imagePaths: [
-                {
-                    src: require("d82c677f22208fa6"),
-                    name: "Bar\xe7a"
-                },
-                {
-                    src: require("3373b09b91b49413"),
-                    name: "Bison"
-                },
-                {
-                    src: require("f63ae04500733365"),
-                    name: "Fnatic"
-                },
-                {
-                    src: require("29a812c714ecdbe6"),
-                    name: "Giants"
-                },
-                {
-                    src: require("c35eb29c9d1c0df9"),
-                    name: "Guasones"
-                },
-                {
-                    src: require("d42d2b81b3e1ccfb"),
-                    name: "Heretics"
-                },
-                {
-                    src: require("8d672579a2e1dd16"),
-                    name: "KOI"
-                },
-                {
-                    src: require("ac60968b5212b620"),
-                    name: "Movistar Riders"
-                },
-                {
-                    src: require("d4868153c9d7d328"),
-                    name: "Rebels"
-                },
-                {
-                    src: require("745b4ca5509b0f83"),
-                    name: "UCAM"
-                }
-            ]
-        };
-    }
-};
-
-},{"d82c677f22208fa6":"awABI","3373b09b91b49413":"ifI4H","f63ae04500733365":"jEibQ","29a812c714ecdbe6":"kyZX9","c35eb29c9d1c0df9":"iSdoI","d42d2b81b3e1ccfb":"2yOmx","8d672579a2e1dd16":"fHEvm","ac60968b5212b620":"2XWjq","d4868153c9d7d328":"9bDr4","745b4ca5509b0f83":"9dvtJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"awABI":[function(require,module,exports) {
-module.exports = require("8e1ac21a950fe571").getBundleURL("gnRNX") + "team_bar\xe7a.8342eec5.png" + "?" + Date.now();
-
-},{"8e1ac21a950fe571":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"ifI4H":[function(require,module,exports) {
-module.exports = require("34aaa4eea01ea2d0").getBundleURL("gnRNX") + "team_bison.e19b431b.png" + "?" + Date.now();
-
-},{"34aaa4eea01ea2d0":"lgJ39"}],"jEibQ":[function(require,module,exports) {
-module.exports = require("ba68f356b1d5bc5c").getBundleURL("gnRNX") + "team_fnatic.0503e428.png" + "?" + Date.now();
-
-},{"ba68f356b1d5bc5c":"lgJ39"}],"kyZX9":[function(require,module,exports) {
-module.exports = require("1ae60f95c00af489").getBundleURL("gnRNX") + "team_giants.0d9d9214.png" + "?" + Date.now();
-
-},{"1ae60f95c00af489":"lgJ39"}],"iSdoI":[function(require,module,exports) {
-module.exports = require("9ed16bd1774226b3").getBundleURL("gnRNX") + "team_guasones.a2f5098c.png" + "?" + Date.now();
-
-},{"9ed16bd1774226b3":"lgJ39"}],"2yOmx":[function(require,module,exports) {
-module.exports = require("34d18c39cdec5d82").getBundleURL("gnRNX") + "team_heretics.7db24eff.png" + "?" + Date.now();
-
-},{"34d18c39cdec5d82":"lgJ39"}],"fHEvm":[function(require,module,exports) {
-module.exports = require("29bf7d1955ecd24").getBundleURL("gnRNX") + "team_KOI.733817be.png" + "?" + Date.now();
-
-},{"29bf7d1955ecd24":"lgJ39"}],"2XWjq":[function(require,module,exports) {
-module.exports = require("f146087de1442acb").getBundleURL("gnRNX") + "team_movistar_riders.e5f0804f.png" + "?" + Date.now();
-
-},{"f146087de1442acb":"lgJ39"}],"9bDr4":[function(require,module,exports) {
-module.exports = require("8d416ac3b06ad3d0").getBundleURL("gnRNX") + "team_rebels.d9856cfd.png" + "?" + Date.now();
-
-},{"8d416ac3b06ad3d0":"lgJ39"}],"9dvtJ":[function(require,module,exports) {
-module.exports = require("2895d757794955ce").getBundleURL("gnRNX") + "team_UCAM.1a0c2959.png" + "?" + Date.now();
-
-},{"2895d757794955ce":"lgJ39"}],"9LhQ4":[function(require,module,exports) {
+},{"d09cd06a153ee05b":"9LhQ4","7c4269ad9a577999":"i9oEo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","729ba35eeff20f13":"9BJT7"}],"9LhQ4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
@@ -12148,40 +11939,156 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("bcc5d4-hmr", render);
+    __VUE_HMR_RUNTIME__.rerender("40fdf8-hmr", render);
 });
 
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i9oEo":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","vue":"gzxs9"}],"i9oEo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
 exports.default = (script)=>{};
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1MExh":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BJT7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    data () {
+        return {
+            imagePaths: [
+                {
+                    src: require("24313f43320390ce"),
+                    name: "Bar\xe7a"
+                },
+                {
+                    src: require("704e29f97862c10f"),
+                    name: "Bison"
+                },
+                {
+                    src: require("7b556b2e4785ba3b"),
+                    name: "Fnatic"
+                },
+                {
+                    src: require("64c3819007dd01d"),
+                    name: "Giants"
+                },
+                {
+                    src: require("e4d41ae3d7b054a0"),
+                    name: "Guasones"
+                },
+                {
+                    src: require("35fd5c0ccb1b071"),
+                    name: "Heretics"
+                },
+                {
+                    src: require("88ce1f67c39e3673"),
+                    name: "KOI"
+                },
+                {
+                    src: require("8bdada2b47df8843"),
+                    name: "Movistar Riders"
+                },
+                {
+                    src: require("eb338eb1aa541cd4"),
+                    name: "Rebels"
+                },
+                {
+                    src: require("218dd7f848896b4f"),
+                    name: "UCAM"
+                }
+            ]
+        };
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","24313f43320390ce":"awABI","704e29f97862c10f":"ifI4H","7b556b2e4785ba3b":"jEibQ","64c3819007dd01d":"kyZX9","e4d41ae3d7b054a0":"iSdoI","35fd5c0ccb1b071":"2yOmx","88ce1f67c39e3673":"fHEvm","8bdada2b47df8843":"2XWjq","eb338eb1aa541cd4":"9bDr4","218dd7f848896b4f":"9dvtJ"}],"awABI":[function(require,module,exports) {
+module.exports = require("b10e471477f78466").getBundleURL("gnRNX") + "team_bar\xe7a.8342eec5.png" + "?" + Date.now();
+
+},{"b10e471477f78466":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"ifI4H":[function(require,module,exports) {
+module.exports = require("2e8740c642f7d55f").getBundleURL("gnRNX") + "team_bison.e19b431b.png" + "?" + Date.now();
+
+},{"2e8740c642f7d55f":"lgJ39"}],"jEibQ":[function(require,module,exports) {
+module.exports = require("ca2c3d5da8c77cdc").getBundleURL("gnRNX") + "team_fnatic.0503e428.png" + "?" + Date.now();
+
+},{"ca2c3d5da8c77cdc":"lgJ39"}],"kyZX9":[function(require,module,exports) {
+module.exports = require("9a5241d81f345b6e").getBundleURL("gnRNX") + "team_giants.0d9d9214.png" + "?" + Date.now();
+
+},{"9a5241d81f345b6e":"lgJ39"}],"iSdoI":[function(require,module,exports) {
+module.exports = require("33f15c64fe03f49c").getBundleURL("gnRNX") + "team_guasones.a2f5098c.png" + "?" + Date.now();
+
+},{"33f15c64fe03f49c":"lgJ39"}],"2yOmx":[function(require,module,exports) {
+module.exports = require("c06129f060a732ba").getBundleURL("gnRNX") + "team_heretics.7db24eff.png" + "?" + Date.now();
+
+},{"c06129f060a732ba":"lgJ39"}],"fHEvm":[function(require,module,exports) {
+module.exports = require("d3f07e71b520902b").getBundleURL("gnRNX") + "team_KOI.733817be.png" + "?" + Date.now();
+
+},{"d3f07e71b520902b":"lgJ39"}],"2XWjq":[function(require,module,exports) {
+module.exports = require("5973c022d3084a72").getBundleURL("gnRNX") + "team_movistar_riders.e5f0804f.png" + "?" + Date.now();
+
+},{"5973c022d3084a72":"lgJ39"}],"9bDr4":[function(require,module,exports) {
+module.exports = require("7b36e17575c00d45").getBundleURL("gnRNX") + "team_rebels.d9856cfd.png" + "?" + Date.now();
+
+},{"7b36e17575c00d45":"lgJ39"}],"9dvtJ":[function(require,module,exports) {
+module.exports = require("88d34baa7ae68343").getBundleURL("gnRNX") + "team_UCAM.1a0c2959.png" + "?" + Date.now();
+
+},{"88d34baa7ae68343":"lgJ39"}],"1MExh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
-    script = require("3360fa19788b3cda");
+    script = require("d28ac4bc9d68efaf");
     if (script.__esModule) script = script.default;
-    script.render = require("66579ce6c518afa").render;
-    require("2acfc4bad75121fb").default(script);
-    script.__scopeId = "data-v-b6b4d2";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\pages\\NotFound.vue";
+    script.render = require("fffff275f47ca3ba").render;
+    require("d17109425b85112").default(script);
+    script.__scopeId = "data-v-f6c729";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\pages\\NotFound.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = "b6b4d2-hmr";
+    script.__hmrId = "f6c729-hmr";
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("b6b4d2-hmr", script)) __VUE_HMR_RUNTIME__.reload("b6b4d2-hmr", script);
+            if (!__VUE_HMR_RUNTIME__.createRecord("f6c729-hmr", script)) __VUE_HMR_RUNTIME__.reload("f6c729-hmr", script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"3360fa19788b3cda":"4QYpk","66579ce6c518afa":"hRhsr","2acfc4bad75121fb":"hlgNF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4QYpk":[function(require,module,exports) {
+},{"d28ac4bc9d68efaf":"4QYpk","fffff275f47ca3ba":"hRhsr","d17109425b85112":"hlgNF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4QYpk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -12206,10 +12113,329 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, _hoisted_4);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("b6b4d2-hmr", render);
+    __VUE_HMR_RUNTIME__.rerender("f6c729-hmr", render);
 });
 
 },{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hlgNF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h1TTJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("3039f07c38d26455");
+    if (script.__esModule) script = script.default;
+    script.render = require("f4e892fd16a700ed").render;
+    require("c1174e4f74d8ffba").default(script);
+    script.__scopeId = "data-v-f58462";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\components\\Players.vue";
+};
+initialize();
+if (module.hot) {
+    script.__hmrId = "f58462-hmr";
+    module.hot.accept(()=>{
+        setTimeout(()=>{
+            initialize();
+            if (!__VUE_HMR_RUNTIME__.createRecord("f58462-hmr", script)) __VUE_HMR_RUNTIME__.reload("f58462-hmr", script);
+        }, 0);
+    });
+}
+exports.default = script;
+
+},{"3039f07c38d26455":"fEsCp","f4e892fd16a700ed":"hyacB","c1174e4f74d8ffba":"1yVJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fEsCp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _leagueOfLegendsJs = require("../api/leagueOfLegends.js");
+var _leagueOfLegendsJsDefault = parcelHelpers.interopDefault(_leagueOfLegendsJs);
+exports.default = {
+    props: [
+        "team"
+    ],
+    data () {
+        return {
+            isActive: true,
+            selectedPlayer: null
+        };
+    },
+    methods: {
+        toggleActivePlayer (player) {
+            if (this.selectedPlayer != player || this.isActive == false) {
+                this.selectedPlayer = player;
+                this.isActive = true;
+            } else this.isActive = false;
+        }
+    },
+    computed: {
+        team () {
+            return (0, _leagueOfLegendsJsDefault.default).find((team)=>team.name === this.team);
+        }
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../api/leagueOfLegends.js":"k6Pim"}],"k6Pim":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const teams = [
+    {
+        name: "Bar\xe7a",
+        image: require("d9bb11c38c10d8db"),
+        players: [
+            {
+                name: "WhiteKnight",
+                image: require("f1520d72b2a2944e"),
+                age: 22,
+                position: "Top",
+                contractEnds: "2023-11-20",
+                joined: "Jan 2023",
+                wins: 25,
+                defeats: 10
+            },
+            {
+                name: "Mapache",
+                image: require("3723ebbfe52287c6"),
+                age: 30,
+                position: "Coach",
+                contractEnds: "May 2023",
+                joined: "May 2023",
+                wins: 18,
+                defeats: 7
+            },
+            {
+                name: "Sajator",
+                image: require("482549b64a2853b6"),
+                age: 21,
+                position: "Mid",
+                contractEnds: "2023-11-20",
+                joined: "Jan 2023",
+                wins: 30,
+                defeats: 15
+            },
+            {
+                name: "Deadly",
+                image: require("f1588d68320d8c30"),
+                age: 23,
+                position: "Bot",
+                contractEnds: "2023-11-20",
+                joined: "Dec 2021",
+                wins: 22,
+                defeats: 8
+            },
+            {
+                name: "Efias",
+                image: require("952a264bb92e8f11"),
+                age: 22,
+                position: "Support",
+                contractEnds: "2023-11-20",
+                joined: "May 2022",
+                wins: 28,
+                defeats: 12
+            },
+            {
+                name: "Xixauxas",
+                image: require("321b508dacc842de"),
+                age: 20,
+                position: "Sub/Sup",
+                contractEnds: "2023-11-20",
+                joined: "Jan 2022",
+                wins: 20,
+                defeats: 10
+            },
+            {
+                name: "Hades",
+                image: require("f5db5e06cf30a5d8"),
+                age: 23,
+                position: "Support",
+                contractEnds: "2023-11-20",
+                joined: "May 2021",
+                wins: 25,
+                defeats: 15
+            }
+        ]
+    },
+    {
+        name: "Guasones",
+        image: require("54e26818f69dc6e"),
+        players: [
+            {
+                name: "Dreedy",
+                image: require("1c6b93756e85e0dc"),
+                age: 20,
+                position: "Top",
+                contractEnds: "2023-11-20",
+                joined: "Dec 2022",
+                wins: 20,
+                defeats: 10
+            },
+            {
+                name: "Akre",
+                image: require("e62507922c303f03"),
+                age: 21,
+                position: "Jungler",
+                contractEnds: "2023-11-20",
+                joined: "May 2023",
+                wins: 15,
+                defeats: 5
+            },
+            {
+                name: "Motroco",
+                image: require("42a9162feb7ff2d8"),
+                age: 40,
+                position: "Coach",
+                contractEnds: "2023-11-20",
+                joined: "May 2023",
+                wins: 10,
+                defeats: 2
+            },
+            {
+                name: "Hydra",
+                image: require("cb9b385afe0620d4"),
+                age: 18,
+                position: "Bot",
+                contractEnds: "2023-11-20",
+                joined: "May 2023",
+                wins: 12,
+                defeats: 8
+            },
+            {
+                name: "Mystiques",
+                image: require("204a1c25c9b108d1"),
+                age: 22,
+                position: "Support",
+                contractEnds: "2023-11-20",
+                joined: "May 2023",
+                wins: 18,
+                defeats: 12
+            },
+            {
+                name: "Nash1c",
+                image: require("a10112706d8a5794"),
+                age: 22,
+                position: "Bot",
+                contractEnds: "2023-11-20",
+                joined: "Feb 2023",
+                wins: 15,
+                defeats: 10
+            },
+            {
+                name: "Yonna",
+                image: require("9c820ee5aea0ffb9"),
+                age: 22,
+                position: "Support",
+                contractEnds: "2023-11-20",
+                joined: "Jul 2022",
+                wins: 20,
+                defeats: 15
+            }
+        ]
+    }
+];
+exports.default = teams;
+
+},{"d9bb11c38c10d8db":"awABI","f1520d72b2a2944e":"33RVs","3723ebbfe52287c6":"e8DoF","482549b64a2853b6":"sZmV3","f1588d68320d8c30":"jK44K","952a264bb92e8f11":"d0at8","321b508dacc842de":"5hxdB","f5db5e06cf30a5d8":"5uvVG","54e26818f69dc6e":"iSdoI","1c6b93756e85e0dc":"75RU4","e62507922c303f03":"7E1GH","42a9162feb7ff2d8":"l5Pvk","cb9b385afe0620d4":"9xkjt","204a1c25c9b108d1":"jAz2y","a10112706d8a5794":"dSUpP","9c820ee5aea0ffb9":"b0SxI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"33RVs":[function(require,module,exports) {
+module.exports = require("bec01dac74496af").getBundleURL("gnRNX") + "WhiteKnight.7e83deae.png" + "?" + Date.now();
+
+},{"bec01dac74496af":"lgJ39"}],"e8DoF":[function(require,module,exports) {
+module.exports = require("81b8fb1fed1d81b3").getBundleURL("gnRNX") + "Mapache.dd5ef1dc.png" + "?" + Date.now();
+
+},{"81b8fb1fed1d81b3":"lgJ39"}],"sZmV3":[function(require,module,exports) {
+module.exports = require("429b34df22d89ba0").getBundleURL("gnRNX") + "Sajator.a17e6ecf.png" + "?" + Date.now();
+
+},{"429b34df22d89ba0":"lgJ39"}],"jK44K":[function(require,module,exports) {
+module.exports = require("e5ab315eb3ee47a2").getBundleURL("gnRNX") + "Deadly.927600de.png" + "?" + Date.now();
+
+},{"e5ab315eb3ee47a2":"lgJ39"}],"d0at8":[function(require,module,exports) {
+module.exports = require("afb4fb95a4bf1174").getBundleURL("gnRNX") + "Efias.3a81d8ea.png" + "?" + Date.now();
+
+},{"afb4fb95a4bf1174":"lgJ39"}],"5hxdB":[function(require,module,exports) {
+module.exports = require("9ad27bbc93caee90").getBundleURL("gnRNX") + "Xixauxas.212c5858.png" + "?" + Date.now();
+
+},{"9ad27bbc93caee90":"lgJ39"}],"5uvVG":[function(require,module,exports) {
+module.exports = require("3158e764b2fc6d0a").getBundleURL("gnRNX") + "Hades.dce9e438.png" + "?" + Date.now();
+
+},{"3158e764b2fc6d0a":"lgJ39"}],"75RU4":[function(require,module,exports) {
+module.exports = require("33f5644596d07d81").getBundleURL("gnRNX") + "Dreedy.2737eeee.png" + "?" + Date.now();
+
+},{"33f5644596d07d81":"lgJ39"}],"7E1GH":[function(require,module,exports) {
+module.exports = require("b454011182a2c8fb").getBundleURL("gnRNX") + "Akre.1fe13e37.png" + "?" + Date.now();
+
+},{"b454011182a2c8fb":"lgJ39"}],"l5Pvk":[function(require,module,exports) {
+module.exports = require("b5c7a9c0a9c2b099").getBundleURL("gnRNX") + "Motroco.83f70c1e.png" + "?" + Date.now();
+
+},{"b5c7a9c0a9c2b099":"lgJ39"}],"9xkjt":[function(require,module,exports) {
+module.exports = require("e958d1b53e5ba34c").getBundleURL("gnRNX") + "Hydra.5095deb6.png" + "?" + Date.now();
+
+},{"e958d1b53e5ba34c":"lgJ39"}],"jAz2y":[function(require,module,exports) {
+module.exports = require("1b77561c2fea50b9").getBundleURL("gnRNX") + "Mystiques.3092e877.png" + "?" + Date.now();
+
+},{"1b77561c2fea50b9":"lgJ39"}],"dSUpP":[function(require,module,exports) {
+module.exports = require("5fe4976b2201cd1f").getBundleURL("gnRNX") + "Nash1c.4ed08d49.png" + "?" + Date.now();
+
+},{"5fe4976b2201cd1f":"lgJ39"}],"b0SxI":[function(require,module,exports) {
+module.exports = require("3dd966f1d0782ea4").getBundleURL("gnRNX") + "Yonna.dfa10282.png" + "?" + Date.now();
+
+},{"3dd966f1d0782ea4":"lgJ39"}],"hyacB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    class: "player-list"
+};
+const _hoisted_2 = [
+    "onClick"
+];
+const _hoisted_3 = [
+    "src",
+    "alt"
+];
+const _hoisted_4 = {
+    class: "player-name"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("ul", _hoisted_1, [
+        ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($options.team.players, (player)=>{
+            return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("li", null, [
+                ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("figure", {
+                    class: (0, _vue.normalizeClass)({
+                        "player-card": true,
+                        "coach": player.position === "Coach"
+                    }),
+                    key: player.name,
+                    onClick: ($event)=>$options.toggleActivePlayer(player.name)
+                }, [
+                    (0, _vue.createElementVNode)("img", {
+                        src: player.image,
+                        alt: player.name,
+                        class: "player-image"
+                    }, null, 8 /* PROPS */ , _hoisted_3),
+                    (0, _vue.createElementVNode)("h2", _hoisted_4, (0, _vue.toDisplayString)(player.name), 1 /* TEXT */ )
+                ], 10 /* CLASS, PROPS */ , _hoisted_2)),
+                (0, _vue.createElementVNode)("article", {
+                    class: (0, _vue.normalizeClass)([
+                        "player-info",
+                        {
+                            active: $data.isActive === true && $data.selectedPlayer === player.name
+                        }
+                    ])
+                }, [
+                    (0, _vue.createElementVNode)("p", null, "Edad: " + (0, _vue.toDisplayString)(player.age), 1 /* TEXT */ ),
+                    (0, _vue.createElementVNode)("p", null, "Posici\xf3n: " + (0, _vue.toDisplayString)(player.position), 1 /* TEXT */ ),
+                    (0, _vue.createElementVNode)("p", null, "Fin de contrato: " + (0, _vue.toDisplayString)(player.contractEnds), 1 /* TEXT */ ),
+                    (0, _vue.createElementVNode)("p", null, "Winrate: " + (0, _vue.toDisplayString)(Math.round(player.wins / (player.wins + player.defeats) * 100).toFixed(2)) + "%", 1 /* TEXT */ )
+                ], 2 /* CLASS */ )
+            ]);
+        }), 256 /* UNKEYED_FRAGMENT */ ))
+    ]);
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender("f58462-hmr", render);
+});
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","vue":"gzxs9"}],"1yVJ9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
@@ -12220,26 +12446,26 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
-    script = require("6819d6ff54456fdd");
+    script = require("59a68bd8269a9f9b");
     if (script.__esModule) script = script.default;
-    script.render = require("be576c70fdbb54d1").render;
-    require("3c7879de36742545").default(script);
-    script.__scopeId = "data-v-7dc1dd";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\pages\\Matches.vue";
+    script.render = require("c0289cc2972e9d0f").render;
+    require("9e3ce589a48878da").default(script);
+    script.__scopeId = "data-v-7ccbf0";
+    script.__file = "C:\\Users\\josep\\Desktop\\Curso y tareas\\Dise\xf1o\\maquetacion_recuperacion\\src\\pages\\Matches.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = "7dc1dd-hmr";
+    script.__hmrId = "7ccbf0-hmr";
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("7dc1dd-hmr", script)) __VUE_HMR_RUNTIME__.reload("7dc1dd-hmr", script);
+            if (!__VUE_HMR_RUNTIME__.createRecord("7ccbf0-hmr", script)) __VUE_HMR_RUNTIME__.reload("7ccbf0-hmr", script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"6819d6ff54456fdd":"3wXC8","be576c70fdbb54d1":"gWwcW","3c7879de36742545":"dqjag","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3wXC8":[function(require,module,exports) {
+},{"59a68bd8269a9f9b":"3wXC8","c0289cc2972e9d0f":"gWwcW","9e3ce589a48878da":"dqjag","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3wXC8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -12250,11 +12476,11 @@ exports.default = {
                     id: 1,
                     date: "2023-05-01",
                     team1: {
-                        src: require("9df429513402e562"),
+                        src: require("453bee30739b3533"),
                         name: "Bar\xe7a"
                     },
                     team2: {
-                        src: require("8049033fadadccef"),
+                        src: require("2542d93b12980818"),
                         name: "Fnatic"
                     },
                     kda: "3.2",
@@ -12266,11 +12492,11 @@ exports.default = {
                     id: 2,
                     date: "2023-05-05",
                     team1: {
-                        src: require("92c472764a9541f8"),
+                        src: require("c6f994043f78190"),
                         name: "Movistar Riders"
                     },
                     team2: {
-                        src: require("a1392d51b3253b82"),
+                        src: require("f1d0c2ca0424ac5a"),
                         name: "Giants"
                     },
                     kda: "2.8",
@@ -12282,11 +12508,11 @@ exports.default = {
                     id: 3,
                     date: "2023-05-10",
                     team1: {
-                        src: require("8d2ba92d9e345590"),
+                        src: require("81c816f49846f591"),
                         name: "Rebels"
                     },
                     team2: {
-                        src: require("be5eafe715d31efb"),
+                        src: require("55570c4881e561a7"),
                         name: "UCAM"
                     },
                     kda: "4.1",
@@ -12298,11 +12524,11 @@ exports.default = {
                     id: 4,
                     date: "2023-05-15",
                     team1: {
-                        src: require("483fe28756e39dfc"),
+                        src: require("26e6fb92a9c09980"),
                         name: "Bison"
                     },
                     team2: {
-                        src: require("883d3bf4fe1580aa"),
+                        src: require("20bef22a2a0234b7"),
                         name: "Heretics"
                     },
                     kda: "2.5",
@@ -12314,11 +12540,11 @@ exports.default = {
                     id: 5,
                     date: "2023-05-20",
                     team1: {
-                        src: require("256a5d6c06b57736"),
+                        src: require("88cd9c570aaca15a"),
                         name: "Guasones"
                     },
                     team2: {
-                        src: require("fd29f176a680aaf7"),
+                        src: require("d1ee7f57100e2cf"),
                         name: "KOI"
                     },
                     kda: "3.9",
@@ -12331,7 +12557,7 @@ exports.default = {
     }
 };
 
-},{"9df429513402e562":"awABI","8049033fadadccef":"jEibQ","92c472764a9541f8":"2XWjq","a1392d51b3253b82":"kyZX9","8d2ba92d9e345590":"9bDr4","be5eafe715d31efb":"9dvtJ","483fe28756e39dfc":"ifI4H","883d3bf4fe1580aa":"2yOmx","256a5d6c06b57736":"iSdoI","fd29f176a680aaf7":"fHEvm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gWwcW":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","453bee30739b3533":"awABI","26e6fb92a9c09980":"ifI4H","2542d93b12980818":"jEibQ","f1d0c2ca0424ac5a":"kyZX9","88cd9c570aaca15a":"iSdoI","20bef22a2a0234b7":"2yOmx","d1ee7f57100e2cf":"fHEvm","c6f994043f78190":"2XWjq","81c816f49846f591":"9bDr4","55570c4881e561a7":"9dvtJ"}],"gWwcW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
@@ -12343,10 +12569,10 @@ const _hoisted_2 = {
     class: "matches-list"
 };
 const _hoisted_3 = {
-    class: "match-info"
+    class: "match-date"
 };
 const _hoisted_4 = {
-    class: "match-date"
+    class: "match-info"
 };
 const _hoisted_5 = {
     class: "team"
@@ -12368,18 +12594,6 @@ const _hoisted_9 = [
 const _hoisted_10 = {
     class: "team-name"
 };
-const _hoisted_11 = {
-    class: "match-details"
-};
-const _hoisted_12 = {
-    class: "match-stat"
-};
-const _hoisted_13 = {
-    class: "match-stat"
-};
-const _hoisted_14 = {
-    class: "match-stat"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
         (0, _vue.createElementVNode)("ul", _hoisted_2, [
@@ -12388,8 +12602,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     key: match.id,
                     class: "match"
                 }, [
-                    (0, _vue.createElementVNode)("section", _hoisted_3, [
-                        (0, _vue.createElementVNode)("h3", _hoisted_4, (0, _vue.toDisplayString)(match.date), 1 /* TEXT */ ),
+                    (0, _vue.createElementVNode)("h3", _hoisted_3, (0, _vue.toDisplayString)(match.date), 1 /* TEXT */ ),
+                    (0, _vue.createElementVNode)("section", _hoisted_4, [
                         (0, _vue.createElementVNode)("figure", _hoisted_5, [
                             (0, _vue.createElementVNode)("img", {
                                 src: match.team1.src,
@@ -12425,11 +12639,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                     }
                                 ])
                             }, (0, _vue.toDisplayString)(match.winner === match.team2.name ? "Victoria" : match.winner === "Empate" ? "Empate" : "Derrota"), 3 /* TEXT, CLASS */ )
-                        ]),
-                        (0, _vue.createElementVNode)("figure", _hoisted_11, [
-                            (0, _vue.createElementVNode)("p", _hoisted_12, "KDA: " + (0, _vue.toDisplayString)(match.kda), 1 /* TEXT */ ),
-                            (0, _vue.createElementVNode)("p", _hoisted_13, "Oro ganado: " + (0, _vue.toDisplayString)(match.gold), 1 /* TEXT */ ),
-                            (0, _vue.createElementVNode)("p", _hoisted_14, "Duraci\xf3n: " + (0, _vue.toDisplayString)(match.duration), 1 /* TEXT */ )
                         ])
                     ])
                 ]);
@@ -12438,312 +12647,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("7dc1dd-hmr", render);
+    __VUE_HMR_RUNTIME__.rerender("7ccbf0-hmr", render);
 });
 
 },{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dqjag":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let NOOP = ()=>{};
-exports.default = (script)=>{};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h1TTJ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = require("89f68d0e5c8fbc31");
-    if (script.__esModule) script = script.default;
-    script.render = require("d447c9c1f19e1302").render;
-    require("390f29b41900a256").default(script);
-    script.__scopeId = "data-v-5b009b";
-    script.__file = "C:\\Users\\usuario ma\xf1ana\\Desktop\\diw_2023_maquetacion_recuperacion\\src\\components\\Players.vue";
-};
-initialize();
-if (module.hot) {
-    script.__hmrId = "5b009b-hmr";
-    module.hot.accept(()=>{
-        setTimeout(()=>{
-            initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("5b009b-hmr", script)) __VUE_HMR_RUNTIME__.reload("5b009b-hmr", script);
-        }, 0);
-    });
-}
-exports.default = script;
-
-},{"89f68d0e5c8fbc31":"fEsCp","d447c9c1f19e1302":"hyacB","390f29b41900a256":"1yVJ9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fEsCp":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _leagueOfLegendsJs = require("../api/leagueOfLegends.js");
-var _leagueOfLegendsJsDefault = parcelHelpers.interopDefault(_leagueOfLegendsJs);
-exports.default = {
-    props: [
-        "team"
-    ],
-    data () {
-        return {
-            selectedPlayer: null
-        };
-    },
-    methods: {
-        toggleCard (player) {
-            this.selectedPlayer = this.selectedPlayer === player ? null : player;
-        }
-    },
-    computed: {
-        team () {
-            return (0, _leagueOfLegendsJsDefault.default).find((team)=>team.name === this.team);
-        }
-    }
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../api/leagueOfLegends.js":"k6Pim"}],"k6Pim":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const teams = [
-    {
-        name: "Bar\xe7a",
-        image: require("c8f18eda747dcb01"),
-        players: [
-            {
-                name: "WhiteKnight",
-                image: require("9679b7b9136226c6"),
-                age: 22,
-                position: "Top",
-                contractEnds: "2023-11-20",
-                joined: "Jan 2023",
-                wins: 25,
-                defeats: 10
-            },
-            {
-                name: "Mapache",
-                image: require("2076efa94e122f7f"),
-                age: 30,
-                position: "Coach",
-                contractEnds: "May 2023",
-                joined: "May 2023",
-                wins: 18,
-                defeats: 7
-            },
-            {
-                name: "Sajator",
-                image: require("12d225956777d968"),
-                age: 21,
-                position: "Mid",
-                contractEnds: "2023-11-20",
-                joined: "Jan 2023",
-                wins: 30,
-                defeats: 15
-            },
-            {
-                name: "Deadly",
-                image: require("358ac5da250db158"),
-                age: 23,
-                position: "Bot",
-                contractEnds: "2023-11-20",
-                joined: "Dec 2021",
-                wins: 22,
-                defeats: 8
-            },
-            {
-                name: "Efias",
-                image: require("7b897ffa590709ed"),
-                age: 22,
-                position: "Support",
-                contractEnds: "2023-11-20",
-                joined: "May 2022",
-                wins: 28,
-                defeats: 12
-            },
-            {
-                name: "Xixauxas",
-                image: require("500dcf280a34e0df"),
-                age: 20,
-                position: "Sub/Sup",
-                contractEnds: "2023-11-20",
-                joined: "Jan 2022",
-                wins: 20,
-                defeats: 10
-            },
-            {
-                name: "Hades",
-                image: require("7dcc6fb492a2ea07"),
-                age: 23,
-                position: "Support",
-                contractEnds: "2023-11-20",
-                joined: "May 2021",
-                wins: 25,
-                defeats: 15
-            }
-        ]
-    },
-    {
-        name: "Guasones",
-        image: require("cd40f6c1cef9e5e6"),
-        players: [
-            {
-                name: "Dreedy",
-                image: require("1844c5ac7e5b5d3b"),
-                age: 20,
-                position: "Top",
-                contractEnds: "2023-11-20",
-                joined: "Dec 2022",
-                wins: 20,
-                defeats: 10
-            },
-            {
-                name: "Akre",
-                image: require("8f93c7a211736473"),
-                age: 21,
-                position: "Jungler",
-                contractEnds: "2023-11-20",
-                joined: "May 2023",
-                wins: 15,
-                defeats: 5
-            },
-            {
-                name: "Motroco",
-                image: require("6f97a446b89b9fc9"),
-                age: 40,
-                position: "Coach",
-                contractEnds: "2023-11-20",
-                joined: "May 2023",
-                wins: 10,
-                defeats: 2
-            },
-            {
-                name: "Hydra",
-                image: require("496e69f82e11cf72"),
-                age: 18,
-                position: "Bot",
-                contractEnds: "2023-11-20",
-                joined: "May 2023",
-                wins: 12,
-                defeats: 8
-            },
-            {
-                name: "Mystiques",
-                image: require("3072fde5b684e2d4"),
-                age: 22,
-                position: "Support",
-                contractEnds: "2023-11-20",
-                joined: "May 2023",
-                wins: 18,
-                defeats: 12
-            },
-            {
-                name: "Nash1c",
-                image: require("1f4bb600788977bc"),
-                age: 22,
-                position: "Bot",
-                contractEnds: "2023-11-20",
-                joined: "Feb 2023",
-                wins: 15,
-                defeats: 10
-            },
-            {
-                name: "Yonna",
-                image: require("d7a52bf1da90db40"),
-                age: 22,
-                position: "Support",
-                contractEnds: "2023-11-20",
-                joined: "Jul 2022",
-                wins: 20,
-                defeats: 15
-            }
-        ]
-    }
-];
-exports.default = teams;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","c8f18eda747dcb01":"awABI","9679b7b9136226c6":"33RVs","2076efa94e122f7f":"e8DoF","12d225956777d968":"sZmV3","358ac5da250db158":"jK44K","7b897ffa590709ed":"d0at8","500dcf280a34e0df":"5hxdB","7dcc6fb492a2ea07":"5uvVG","cd40f6c1cef9e5e6":"iSdoI","1844c5ac7e5b5d3b":"75RU4","8f93c7a211736473":"7E1GH","6f97a446b89b9fc9":"l5Pvk","496e69f82e11cf72":"9xkjt","3072fde5b684e2d4":"jAz2y","1f4bb600788977bc":"dSUpP","d7a52bf1da90db40":"b0SxI"}],"33RVs":[function(require,module,exports) {
-module.exports = require("ab26afd68e65b1ea").getBundleURL("gnRNX") + "WhiteKnight.7e83deae.png" + "?" + Date.now();
-
-},{"ab26afd68e65b1ea":"lgJ39"}],"e8DoF":[function(require,module,exports) {
-module.exports = require("e5d61ff43483a610").getBundleURL("gnRNX") + "Mapache.dd5ef1dc.png" + "?" + Date.now();
-
-},{"e5d61ff43483a610":"lgJ39"}],"sZmV3":[function(require,module,exports) {
-module.exports = require("b8e75674e4ad0f6e").getBundleURL("gnRNX") + "Sajator.a17e6ecf.png" + "?" + Date.now();
-
-},{"b8e75674e4ad0f6e":"lgJ39"}],"jK44K":[function(require,module,exports) {
-module.exports = require("31b644aa0b4fec5d").getBundleURL("gnRNX") + "Deadly.927600de.png" + "?" + Date.now();
-
-},{"31b644aa0b4fec5d":"lgJ39"}],"d0at8":[function(require,module,exports) {
-module.exports = require("742f825c69b9b4b2").getBundleURL("gnRNX") + "Efias.3a81d8ea.png" + "?" + Date.now();
-
-},{"742f825c69b9b4b2":"lgJ39"}],"5hxdB":[function(require,module,exports) {
-module.exports = require("d76fe4a2acec7e67").getBundleURL("gnRNX") + "Xixauxas.212c5858.png" + "?" + Date.now();
-
-},{"d76fe4a2acec7e67":"lgJ39"}],"5uvVG":[function(require,module,exports) {
-module.exports = require("8cfd4a4aa619356d").getBundleURL("gnRNX") + "Hades.dce9e438.png" + "?" + Date.now();
-
-},{"8cfd4a4aa619356d":"lgJ39"}],"75RU4":[function(require,module,exports) {
-module.exports = require("e405b5cf1ca1a161").getBundleURL("gnRNX") + "Dreedy.2737eeee.png" + "?" + Date.now();
-
-},{"e405b5cf1ca1a161":"lgJ39"}],"7E1GH":[function(require,module,exports) {
-module.exports = require("a30db34e7ee5d84").getBundleURL("gnRNX") + "Akre.1fe13e37.png" + "?" + Date.now();
-
-},{"a30db34e7ee5d84":"lgJ39"}],"l5Pvk":[function(require,module,exports) {
-module.exports = require("4533b7806b7b17ae").getBundleURL("gnRNX") + "Motroco.83f70c1e.png" + "?" + Date.now();
-
-},{"4533b7806b7b17ae":"lgJ39"}],"9xkjt":[function(require,module,exports) {
-module.exports = require("9c2ea5a2999e2e14").getBundleURL("gnRNX") + "Hydra.5095deb6.png" + "?" + Date.now();
-
-},{"9c2ea5a2999e2e14":"lgJ39"}],"jAz2y":[function(require,module,exports) {
-module.exports = require("fe306d11ce3f9a68").getBundleURL("gnRNX") + "Mystiques.3092e877.png" + "?" + Date.now();
-
-},{"fe306d11ce3f9a68":"lgJ39"}],"dSUpP":[function(require,module,exports) {
-module.exports = require("b7d2f0c82e4e23c7").getBundleURL("gnRNX") + "Nash1c.4ed08d49.png" + "?" + Date.now();
-
-},{"b7d2f0c82e4e23c7":"lgJ39"}],"b0SxI":[function(require,module,exports) {
-module.exports = require("22f64744d3e03802").getBundleURL("gnRNX") + "Yonna.dfa10282.png" + "?" + Date.now();
-
-},{"22f64744d3e03802":"lgJ39"}],"hyacB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-const _hoisted_1 = {
-    class: "player-list"
-};
-const _hoisted_2 = [
-    "src",
-    "alt"
-];
-const _hoisted_3 = {
-    class: "player-info"
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
-        (0, _vue.createCommentVNode)(' <section class="player">\r\n    <article class="player-card" v-for="player in team.players" :key="player.name" @click="toggleCard(player)">\r\n      <figure class="player-photo">\r\n        <img :src="player.image" :alt="player.name" class="player-image">\r\n        \r\n      </figure>\r\n    </article>\r\n  </section> '),
-        (0, _vue.createElementVNode)("div", _hoisted_1, [
-            ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($options.team.players, (player)=>{
-                return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("figure", {
-                    class: "player-card",
-                    key: player.name
-                }, [
-                    (0, _vue.createElementVNode)("img", {
-                        src: player.image,
-                        alt: player.name,
-                        class: "player-image"
-                    }, null, 8 /* PROPS */ , _hoisted_2),
-                    (0, _vue.createElementVNode)("article", _hoisted_3, [
-                        (0, _vue.createElementVNode)("h2", null, "Nombre: " + (0, _vue.toDisplayString)(player.name), 1 /* TEXT */ ),
-                        (0, _vue.createElementVNode)("p", null, "Edad: " + (0, _vue.toDisplayString)(player.age), 1 /* TEXT */ ),
-                        (0, _vue.createElementVNode)("p", null, "Posici\xf3n: " + (0, _vue.toDisplayString)(player.position), 1 /* TEXT */ ),
-                        (0, _vue.createElementVNode)("p", null, "Finalicaci\xf3n de contrato: " + (0, _vue.toDisplayString)(player.contractEnds), 1 /* TEXT */ ),
-                        (0, _vue.createElementVNode)("p", null, "Winrate " + (0, _vue.toDisplayString)(Math.round(player.wins / (player.wins + player.defeats) * 100).toFixed(2)) + "%", 1 /* TEXT */ )
-                    ])
-                ]);
-            }), 128 /* KEYED_FRAGMENT */ ))
-        ])
-    ], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */ );
-}
-if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("5b009b-hmr", render);
-});
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1yVJ9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
@@ -12768,7 +12675,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("8784af-hmr", render);
+    __VUE_HMR_RUNTIME__.rerender("89c228-hmr", render);
 });
 
 },{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h0MjM":[function(require,module,exports) {

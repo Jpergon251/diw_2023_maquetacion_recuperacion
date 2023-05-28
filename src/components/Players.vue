@@ -1,25 +1,26 @@
+
 <template>
-  <!-- <section class="player">
-    <article class="player-card" v-for="player in team.players" :key="player.name" @click="toggleCard(player)">
-      <figure class="player-photo">
-        <img :src="player.image" :alt="player.name" class="player-image">
-        
-      </figure>
-    </article>
-  </section> -->
-  <div class="player-list">
-    <figure class="player-card" v-for="player in team.players" :key="player.name">
+  <ul class="player-list">
+    <li v-for="player in team.players">
+    <figure
+      :class="{
+        'player-card': true,
+        'coach': player.position === 'Coach'
+      }"
+      :key="player.name"
+      @click="toggleActivePlayer(player.name)"
+      >
       <img :src="player.image" :alt="player.name" class="player-image">
-      <article class="player-info">
-        <h2>Nombre: {{ player.name }}</h2>
+      <h2 class="player-name">{{ player.name }}</h2>
+    </figure>
+    <article class="player-info" :class="{ active: isActive === true && selectedPlayer === player.name }">  
         <p>Edad: {{ player.age }}</p>
         <p>Posición: {{ player.position }}</p>
-        <p>Finalicación de contrato: {{ player.contractEnds }}</p>
-        <p>Winrate {{ Math.round(player.wins/(player.wins + player.defeats) * 100).toFixed(2)}}%</p>
+        <p>Fin de contrato: {{ player.contractEnds }}</p>
+        <p>Winrate: {{ Math.round(player.wins / (player.wins + player.defeats) * 100).toFixed(2) }}%</p>
       </article>
-    </figure>
-    
-  </div>
+  </li>
+  </ul>
 </template>
 
 <script>
@@ -29,14 +30,21 @@ export default {
   props: ['team'],
   data() {
     return {
-      selectedPlayer: null
+      isActive: true,
+      selectedPlayer: null,
     };
   },
   methods: {
-    toggleCard(player) {
-      this.selectedPlayer = this.selectedPlayer === player ? null : player;
+    toggleActivePlayer(player) {
+      
+      if (this.selectedPlayer != player || this.isActive == false){
+        this.selectedPlayer = player
+        this.isActive = true
+      }else{
+        this.isActive = false
+      }
     }
-  },
+    },
   computed: {
     team() {
       return teams.find(team => team.name === this.team);
